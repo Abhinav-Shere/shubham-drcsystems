@@ -1,8 +1,71 @@
-<h1>List of Doctors</h1>
-<ul>
-  <% @doctors.each do |doctor| %>
-    <li><%= link_to doctor.name, doctor %></li>
-  <% end %>
-</ul>
-<hr>
-<%= link_to "Set Availablility", new_doctor_availability_path(current_doctor)%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of Doctors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    li a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    .set-availability {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .set-availability:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>List of Doctors</h1>
+  <ul>
+    <% @doctors.each do |doctor| %>
+      <li><%= link_to doctor.name, doctor %></li>
+    <% end %>
+  </ul>
+  <hr>
+  <%= link_to "Set Availability", new_doctor_availability_path(current_doctor), class: "set-availability" %>
+</body>
+</html>

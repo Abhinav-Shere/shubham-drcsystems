@@ -1,8 +1,71 @@
-<h1>List of Patients</h1>
-<ul>
-  <% @patients.each do |patient| %>
-    <li><%= link_to patient.name, patient %></li>
-  <% end %>
-</ul>
-<hr>
-<%= link_to "Book an appointment", new_patient_appointment_path(current_patient)%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of Patients</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    li a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    .book-appointment {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .book-appointment:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>List of Patients</h1>
+  <ul>
+    <% @patients.each do |patient| %>
+      <li><%= link_to patient.name, patient %></li>
+    <% end %>
+  </ul>
+  <hr>
+  <%= link_to "Book an appointment", new_patient_appointment_path(current_patient), class: "book-appointment" %>
+</body>
+</html>

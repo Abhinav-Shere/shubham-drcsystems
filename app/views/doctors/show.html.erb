@@ -1,20 +1,110 @@
-<h1><%= @doctor.name %></h1>
-<h2>Availabilities:</h2>
-<ul>
-  <%debugger%>
-  <% @doctor.availabilities.each do |availability| %>
-    From: <li><%= availability.start_time.strftime("%B %d, %Y %H:%M") %></li>
-    To: <li><%= availability.end_time.strftime("%B %d, %Y %H:%M") %></li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @doctor.name %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
 
-<h2>Appointments:</h2>
-<ul>
-  <% @doctor.appointments.each do |appointment| %>
-    <li><%= link_to appointment.patient.name, appointment %></li>
-      <%if appointment.pending?%>
-        <%= link_to 'Accept', accept_doctor_appointment_path(appointment), method: :patch %>
-        <%= link_to 'Reject', reject_doctor_appointment_path(appointment), method: :patch %>
-      <%end%>
-  <% end %>
-</ul>
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .availability-item {
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .appointment-item {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .appointment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .appointment-actions a {
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .appointment-actions a.accept {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .appointment-actions a.reject {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= @doctor.name %></h1>
+
+  <h2>Availabilities:</h2>
+  <ul>
+    <% @doctor.availabilities.each do |availability| %>
+      <li class="availability-item">
+        <strong>From:</strong> <%= availability.start_time.strftime("%B %d, %Y %H:%M") %><br>
+        <strong>To:</strong> <%= availability.end_time.strftime("%B %d, %Y %H:%M") %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Appointments:</h2>
+  <ul>
+    <% @doctor.appointments.each do |appointment| %>
+      <li class="appointment-item">
+        <a href="<%= appointment_path(appointment) %>"><%= appointment.patient.name %></a>
+        <% if appointment.pending? %>
+          <div class="appointment-actions">
+            <%= link_to 'Accept', accept_doctor_appointment_path(appointment), method: :patch, class: "accept" %>
+            <%= link_to 'Reject', reject_doctor_appointment_path(appointment), method: :patch, class: "reject" %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>

@@ -1,4 +1,41 @@
-<h1>Appointment Details</h1>
-<h2>Patient: <%= link_to @appointment.patient.name, @appointment.patient %></h2>
-<h2>Doctor: <%= link_to @appointment.doctor.name, @appointment.doctor %></h2>
-<h2>Appointment Time: <%= @appointment.appointment_time.strftime("%B %d, %Y %H:%M") %></h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appointment Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Appointment Details</h1>
+
+  <h2>Patient: <%= link_to @appointment.patient.name, @appointment.patient %></h2>
+  <h2>Doctor: <%= link_to @appointment.doctor.name, @appointment.doctor %></h2>
+  <h2>Appointment Time: <%= @appointment.appointment_time.strftime("%B %d, %Y %H:%M") %></h2>
+</body>
+</html>

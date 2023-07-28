@@ -1,7 +1,56 @@
-<h1><%= @patient.name %></h1>
-<h2>Appointments:</h2>
-<ul>
-  <% @patient.appointments.each do |appointment| %>
-    <li><%= link_to appointment.doctor.name, appointment %></li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @patient.name %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= @patient.name %></h1>
+
+  <h2>Appointments:</h2>
+  <ul>
+    <% @patient.appointments.each do |appointment| %>
+      <li>
+        <%= link_to appointment.doctor.name, appointment %>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>
