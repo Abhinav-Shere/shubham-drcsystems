@@ -45,7 +45,7 @@
       display: block;
       text-align: center;
       margin: 20px auto;
-      padding: 10px 20px;
+    padding: 10px 15px;
       background-color: #007BFF;
       color: #fff;
       text-decoration: none;
@@ -67,5 +67,6 @@
   </ul>
   <hr>
   <%= link_to "Set Availability", new_doctor_availability_path(current_doctor), class: "set-availability" %>
+  <%= link_to "Patients", patients_path, class: "set-availability"%>
 </body>
 </html>

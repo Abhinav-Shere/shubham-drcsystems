@@ -12,24 +12,18 @@ class AppointmentsController < ApplicationController
     @appointment.patient = current_patient
 
     if @appointment.save
+      redirect_to patient_path(current_patient), notice: "Appointment booked successfully."
     else
       render :new
     end
   end
-  def accept
-    @appointment = Appointment.find(params[:id])
-    @appointment.accepted!
-    redirect_to doctor_path(current_doctor), notice: 'Appointment accepted!'
-  end
-
-  def reject
-    @appointment = Appointment.find(params[:id])
-    @appointment.rejected!
-    redirect_to doctor_path(current_doctor), notice: 'Appointment rejected!'
-  end
-
   def index
     @appointments = current_patient.appointments.order(:appointment_time)
+  end
+  def destroy 
+    @appointment = current_patient.appointments.find(params[:id])
+    @appointment.destroy
+    redirect_to root_path
   end
 
   private

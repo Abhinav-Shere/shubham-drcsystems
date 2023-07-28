@@ -97,12 +97,8 @@
     <% @doctor.appointments.each do |appointment| %>
       <li class="appointment-item">
         <a href="<%= appointment_path(appointment) %>"><%= appointment.patient.name %></a>
-        <% if appointment.pending? %>
-          <div class="appointment-actions">
-            <%= link_to 'Accept', accept_doctor_appointment_path(appointment), method: :patch, class: "accept" %>
-            <%= link_to 'Reject', reject_doctor_appointment_path(appointment), method: :patch, class: "reject" %>
-          </div>
-        <% end %>
+        <br>
+        <%= button_to 'Reject', doctor_appointment_path(current_doctor,appointment), method: :delete, data: { confirm: 'Are you sure to reject this?' } %>
       </li>
     <% end %>
   </ul>
