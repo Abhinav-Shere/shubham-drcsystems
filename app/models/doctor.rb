@@ -5,6 +5,6 @@ class Doctor < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :availabilities
-  has_many :appointments # Make sure this line is present
+  has_many :appointments 
   has_many :patients, through: :appointments
 end
