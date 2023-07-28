@@ -1,14 +1,12 @@
-# app/views/availabilities/_form.html.erb
-
 <%= form_with(model: [@doctor, @availability], url: doctor_availabilities_path(current_doctor), local: true) do |form| %>
-  <div>
+ <div>
     <%= form.label :start_time %>
-    <%= form.time_select :start_time, { default: @default_start_time, minute_step: 60 }, { class: 'form-control' } %>
+    <%= form.datetime_select :start_time, { default: @default_start_time, minute_step: 60 }, { class: 'form-control' } %>
   </div>
 
   <div>
     <%= form.label :end_time %>
-    <%= form.time_select :end_time, { default: @default_end_time, minute_step: 60 }, { class: 'form-control' } %>
+    <%= form.datetime_select :end_time, { default: @default_end_time, minute_step: 60 }, { class: 'form-control' } %>
   </div>
 
   <div>

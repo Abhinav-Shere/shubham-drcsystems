@@ -1,4 +1,3 @@
-# app/views/doctors/show.html.erb
 <h1><%= @doctor.name %></h1>
 <h2>Availabilities:</h2>
 <ul>
@@ -13,5 +12,9 @@
 <ul>
   <% @doctor.appointments.each do |appointment| %>
     <li><%= link_to appointment.patient.name, appointment %></li>
+      <%if appointment.pending?%>
+        <%= link_to 'Accept', accept_doctor_appointment_path(appointment), method: :patch %>
+        <%= link_to 'Reject', reject_doctor_appointment_path(appointment), method: :patch %>
+      <%end%>
   <% end %>
 </ul>
