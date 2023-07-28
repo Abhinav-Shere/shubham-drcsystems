@@ -1,0 +1,9 @@
+# app/views/patients/index.html.erb
+<h1>List of Patients</h1>
+<ul>
+  <% @patients.each do |patient| %>
+    <li><%= link_to patient.name, patient %></li>
+  <% end %>
+</ul>
+<hr>
+<%= link_to "Book an appointment", new_patient_appointment_path(current_patient)%>

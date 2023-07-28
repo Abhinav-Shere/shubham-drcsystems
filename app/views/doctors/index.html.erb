@@ -1,0 +1,9 @@
+# app/views/doctors/index.html.erb
+<h1>List of Doctors</h1>
+<ul>
+  <% @doctors.each do |doctor| %>
+    <li><%= link_to doctor.name, doctor %></li>
+  <% end %>
+</ul>
+<hr>
+<%= link_to "Set Availablility", new_doctor_availability_path(current_doctor)%>

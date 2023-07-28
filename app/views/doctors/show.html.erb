@@ -1,0 +1,17 @@
+# app/views/doctors/show.html.erb
+<h1><%= @doctor.name %></h1>
+<h2>Availabilities:</h2>
+<ul>
+  <%debugger%>
+  <% @doctor.availabilities.each do |availability| %>
+    From: <li><%= availability.start_time.strftime("%B %d, %Y %H:%M") %></li>
+    To: <li><%= availability.end_time.strftime("%B %d, %Y %H:%M") %></li>
+  <% end %>
+</ul>
+
+<h2>Appointments:</h2>
+<ul>
+  <% @doctor.appointments.each do |appointment| %>
+    <li><%= link_to appointment.patient.name, appointment %></li>
+  <% end %>
+</ul>

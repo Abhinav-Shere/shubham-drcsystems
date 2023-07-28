@@ -1,0 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  prepared_statements: false
+development:
+  <<: *default
+  database: mydb123
+  host: localhost
+  pool: 5
+  username: myuser123
+  password: mypass123
+
+test:
+  <<: *default
+  database: mydb123  
+  host: localhost
+  pool: 5
+  username: myuser123
+  password: mypass123

@@ -1,0 +1,8 @@
+# app/views/patients/show.html.erb
+<h1><%= @patient.name %></h1>
+<h2>Appointments:</h2>
+<ul>
+  <% @patient.appointments.each do |appointment| %>
+    <li><%= link_to appointment.doctor.name, appointment %></li>
+  <% end %>
+</ul>

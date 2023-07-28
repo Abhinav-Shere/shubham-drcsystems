@@ -1,0 +1,17 @@
+# app/views/appointments/_form.html.erb
+
+<%= form_with(model: [patient, appointment], url: patient_appointments_path(current_patient), local: true) do |form| %>
+  <div>
+    <%= form.label :doctor_id %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :name, prompt: "Select a Doctor" %>
+  </div>
+
+  <div>
+    <%= form.label :appointment_time %>
+    <%= form.datetime_select :appointment_time %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
