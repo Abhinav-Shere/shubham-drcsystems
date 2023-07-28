@@ -2,14 +2,14 @@ class AvailabilitiesController < ApplicationController
   before_action :authenticate_doctor!
 
   def new
-    debugger
     @availability = Availability.new
-    @default_start_time = Time.now.change(hour: 10, min: 0, sec: 0) # Default start time at 10:00 AM
-    @default_end_time = Time.now.change(hour: 13, min: 0, sec: 0)   # Default end time at 1:00 PM
+    @default_start_time = Time.now.change(hour: 10, min: 0, sec: 0)
+    @default_end_time = Time.now.change(hour: 13, min: 0, sec: 0) + 1.hour
+    @end_date = Time.now + 7.days
   end
 
+
   def create
-    # Save the doctor's availability
     @availability = Availability.new(availability_params)
     @availability.doctor = current_doctor
     debugger
@@ -21,11 +21,8 @@ class AvailabilitiesController < ApplicationController
   end
 
   def index
-    # Display the list of availabilities for the current doctor
     @availabilities = current_doctor.availabilities.order(:start_time)
   end
-
-  # ... other actions as needed ...
 
   private
 
